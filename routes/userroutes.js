@@ -10,8 +10,8 @@ router.post("/login",async (req,res)=>{
     if (token) {
         res.cookie("token",token,{
                     httpOnly: true,
-                    secure: false, // true in production with HTTPS
-                    sameSite: "Lax", // or "None" if needed for cross-site
+                    secure: true, // true in production with HTTPS
+                    sameSite: "None", // or "None" if needed for cross-site
                     maxAge: 7 * 24 * 60 * 60 * 1000
                 })
         res.status(200).send("Logged In")

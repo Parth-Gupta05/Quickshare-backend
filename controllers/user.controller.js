@@ -53,8 +53,8 @@ const SignUp=async (req,res)=>{
                 if (token) {
         res.cookie("token",token,{
                     httpOnly: true,
-                    secure: false, // true in production with HTTPS
-                    sameSite: "Lax", // or "None" if needed for cross-site
+                    secure: true, // true in production with HTTPS
+                    sameSite: "None", // or "None" if needed for cross-site
                     maxAge: 7 * 24 * 60 * 60 * 1000
                 })
         res.status(200).send("User created and Logged In")
@@ -86,8 +86,8 @@ const Logout = async (req, res) => {
 try {
       res.clearCookie("token", {
         httpOnly: true,
-        secure: false,       // set to true if using HTTPS
-        sameSite: "lax",   // or "strict" / "lax" based on your setup
+        secure: true,       // set to true if using HTTPS
+        sameSite: "None",   // or "strict" / "lax" based on your setup
       });
       res.status(200).json({ message: "Logged out successfully" });
 } catch (error) {
